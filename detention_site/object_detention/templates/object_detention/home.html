@@ -1,0 +1,13 @@
+{% extends 'object_detection/base_generic.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to Object Detection App!</h1>
+        <p class="lead">Upload your images and use our model to detect objects in them.</p>
+        <hr class="my-4">
+        <p>If you're not logged in, please do so to start using the app.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'dashboard' %}" role="button">Go to Dashboard</a>
+    </div>
+{% endblock %}

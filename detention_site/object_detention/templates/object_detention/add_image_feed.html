@@ -1,0 +1,19 @@
+{% extends 'object_detection/base_generic.html' %}
+
+{% block content %}
+    <h2>Upload and Detect Objects</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" accept="image/*">
+        <button type="submit" class="btn btn-primary">Upload Image</button>
+    </form>
+
+    {% if image_url %}
+        <h3>Processed Image</h3>
+        <img src="{{ image_url }}" alt="Processed Image">
+        <p>Boxes: {{ boxes }}</p>
+        <p>Labels: {{ labels }}</p>
+        <p>Scores: {{ scores }}</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'object_detection/base_generic.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Your Images</h2>
+
+    <a href="{% url 'add_image' %}" class="btn btn-success mb-4">Upload New Image</a>
+
+    <div class="row">
+        {% for image in images %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ image.image.url }}" class="card-img-top" alt="Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Image ID: {{ image.id }}</h5>
+                        {% if image.processed_image %}
+                            <p class="card-text">Processed Image: <img src="{{ image.processed_image.url }}" alt="Processed Image" style="width: 100%;"></p>
+                        {% endif %}
+                        <p class="card-text">Class: {{ image.class_name }} (Confidence: {{ image.confidence }})</p>
+                        <a href="#" class="btn btn-danger">Delete Image</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
